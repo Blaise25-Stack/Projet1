@@ -249,9 +249,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                             {item.badge}
                           </span>
                         )}
-                        {readOnly && (
-                          <EyeOff className="h-4 w-4 text-gray-400 ml-2" title="Accès limité" />
-                        )}
+                        
                       </Link>
                     </li>
                   );
@@ -355,9 +353,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                         {item.badge}
                       </span>
                     )}
-                    {readOnly && (
-                      <EyeOff className="h-4 w-4 text-gray-400" title="Accès limité - Inscrivez vos enfants pour accéder" />
-                    )}
+                    
                   </Link>
                 </li>
               );
