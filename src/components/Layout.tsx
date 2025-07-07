@@ -222,7 +222,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </button>
             </div>
             
-            <nav className="mt-4 px-4 flex-1 overflow-y-auto">
+           <nav className="mt-4 px-4 h-[calc(100vh-4rem)] overflow-y-auto">
               <ul className="space-y-2">
                 {filteredNavigation.map((item) => {
                   const Icon = item.icon;
