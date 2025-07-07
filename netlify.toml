@@ -1,4 +1,0 @@
-[[redirects ]]
-form = "/*"
-to = "/src/App.tsx"
-status = 200
