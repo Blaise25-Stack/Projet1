@@ -93,7 +93,7 @@ const Payments: React.FC = () => {
       completed: 'bg-green-100 text-green-800',
       cancelled: 'bg-red-100 text-red-800'
     };
-    return `${amount.toLocaleString()} FC`;
+    return colors[status]; // Retourne la couleur basée sur le statut
   };
 
   const totalAmount = filteredPayments
