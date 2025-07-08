@@ -332,7 +332,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className="hidden lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-64 lg:bg-white lg:shadow-lg lg:overflow-y-auto">
         <div className="flex h-16 items-center justify-center border-b border-gray-200">
           <School className="h-8 w-8 text-blue-600" />
-          <span className="ml-2 text-xl font-bold text-gray-900">École Numérique RDC</span>
+          <span className="ml-2 text-xl font-bold text-gray-900">Académie de la Genese</span>
         </div>
         
         <nav className="mt-8 px-4 flex-1">
