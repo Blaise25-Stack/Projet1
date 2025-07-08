@@ -264,3 +264,47 @@ export interface ParentNotification {
   createdAt: string;
   readAt?: string;
 }
+
+// Nouveau type pour la gestion des salaires
+export interface TeacherSalary {
+  id: string;
+  teacherId: string;
+  baseSalary: number; // Salaire de base mensuel
+  advances: TeacherAdvance[]; // Accomptes reçus
+  bonuses: number; // Primes
+  deductions: number; // Retenues
+  month: string; // Format: YYYY-MM
+  year: string;
+  totalPaid: number; // Total déjà payé (accomptes + primes)
+  remainingBalance: number; // Solde restant à payer
+  status: 'pending' | 'partial' | 'completed';
+  paymentDate?: string;
+  notes?: string;
+}
+
+export interface TeacherAdvance {
+  id: string;
+  teacherId: string;
+  amount: number;
+  date: string;
+  reason: string;
+  method: 'especes' | 'virement' | 'mobile';
+  approvedBy: string;
+  receiptNumber: string;
+  month: string; // Mois sur lequel l'accompte sera déduit
+  year: string;
+}
+
+export interface MonthlySalaryCost {
+  id: string;
+  month: string; // Format: YYYY-MM
+  year: string;
+  totalBaseSalaries: number;
+  totalAdvances: number;
+  totalBonuses: number;
+  totalDeductions: number;
+  totalCost: number; // Coût total du mois
+  teacherCount: number;
+  generatedDate: string;
+  notes?: string;
+}

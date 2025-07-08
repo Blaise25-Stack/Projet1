@@ -99,7 +99,7 @@ const PublicRegister: React.FC = () => {
           <div className="flex justify-center mb-4">
             <School className="h-12 w-12 text-blue-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">Académie de la Genèse</h1>
+          <h1 className="text-3xl font-bold text-gray-900">École Numérique RDC</h1>
           <p className="text-gray-600 mt-2">Inscription en ligne</p>
         </div>
 

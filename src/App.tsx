@@ -23,6 +23,7 @@ import Rooms from './pages/Rooms';
 import Videos from './pages/Videos';
 import Contact from './pages/Contact';
 import Messages from './pages/Messages';
+import Salaries from './pages/Salaries';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
@@ -90,6 +91,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/videos" element={<Videos />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/messages" element={<Messages />} />
+        <Route path="/salaries" element={<Salaries />} />
         <Route path="*" element={<Navigate to="/dashboard" />} />
       </Routes>
     </Layout>

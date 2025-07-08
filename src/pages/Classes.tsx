@@ -210,15 +210,12 @@ const Classes: React.FC = () => {
                   className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="">Sélectionner un niveau</option>
-                  <option value="CP">CP</option>
-                  <option value="CE1">CE1</option>
-                  <option value="CE2">CE2</option>
-                  <option value="CM1">CM1</option>
-                  <option value="CM2">CM2</option>
-                  <option value="6ème">6ème</option>
-                  <option value="5ème">5ème</option>
-                  <option value="4ème">4ème</option>
+                  <option value="1ère">1ère</option>
+                  <option value="2ème">2ème</option>
                   <option value="3ème">3ème</option>
+                  <option value="4ème">4ème</option>
+                  <option value="5ème">5ème</option>
+                  <option value="6ème">6ème</option>
                 </select>
               </div>
 

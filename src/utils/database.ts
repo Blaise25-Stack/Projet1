@@ -2,7 +2,7 @@ import { User, Student, Class, Subject, Grade, Payment, Staff, InventoryItem, Ne
 import { SupabaseDatabase } from './databaseSupabase';
 
 // Configuration pour PostgreSQL (en production) ou localStorage (en développement)
-const USE_POSTGRESQL = import.meta.env.VITE_USE_SUPABASE === 'true';
+const USE_SUPABASE = import.meta.env.VITE_USE_SUPABASE === 'true';
 
 // Interface pour la configuration PostgreSQL
 interface DatabaseConfig {
@@ -20,7 +20,7 @@ class Database {
   private supabaseDb: SupabaseDatabase | null = null;
 
   constructor() {
-    if (USE_POSTGRESQL) {
+    if (USE_SUPABASE) {
       this.supabaseDb = new SupabaseDatabase();
       console.log('Using Supabase database');
     } else {
@@ -571,8 +571,8 @@ class Database {
         password: 'admin123',
         role: 'admin',
         name: 'Administrateur Principal',
-        email: 'admin@ecole-numerique.ci',
-        phone: '+225 01 23 45 67 89',
+        email: 'admin@ecole-numerique.cd',
+        phone: '+243 81 234 5678',
         isActive: true,
         createdAt: new Date().toISOString(),
         profilePhoto: 'https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1'
@@ -582,9 +582,9 @@ class Database {
         username: 'prof1',
         password: 'prof123',
         role: 'teacher',
-        name: 'Marie Dupont',
-        email: 'marie.dupont@ecole-numerique.ci',
-        phone: '+225 07 89 12 34 56',
+        name: 'Marie Kabila',
+        email: 'marie.kabila@ecole-numerique.cd',
+        phone: '+243 97 123 4567',
         assignedClasses: ['1'],
         isActive: true,
         createdAt: new Date().toISOString(),
@@ -595,9 +595,9 @@ class Database {
         username: 'parent1',
         password: 'parent123',
         role: 'parent',
-        name: 'Pierre Martin',
-        email: 'pierre.martin@email.com',
-        phone: '+225 05 98 76 54 32',
+        name: 'Jean Mukendi',
+        email: 'jean.mukendi@email.com',
+        phone: '+243 85 987 6543',
         childrenIds: ['1'],
         isActive: true,
         createdAt: new Date().toISOString(),
@@ -625,8 +625,8 @@ class Database {
     const defaultClasses: Class[] = [
       {
         id: '1',
-        name: 'CM2 A',
-        level: 'CM2',
+        name: '6ème A',
+        level: '6ème',
         teacherId: '2',
         academicYear: '2024-2025',
         subjects: ['1', '2', '3', '4', '5', '6'],
@@ -634,8 +634,8 @@ class Database {
       },
       {
         id: '2',
-        name: 'CM1 B',
-        level: 'CM1',
+        name: '5ème B',
+        level: '5ème',
         teacherId: '2',
         academicYear: '2024-2025',
         subjects: ['1', '2', '3', '4', '5', '6'],
@@ -650,15 +650,15 @@ class Database {
     const defaultStudents: Student[] = [
       {
         id: '1',
-        firstName: 'Jean',
-        lastName: 'Martin',
+        firstName: 'Josué',
+        lastName: 'Mukendi',
         dateOfBirth: '2012-05-15',
         gender: 'M',
         classId: '1',
-        parentName: 'Pierre Martin',
-        parentPhone: '+225 05 98 76 54 32',
-        parentEmail: 'pierre.martin@email.com',
-        address: 'Village de Kourou, Abidjan',
+        parentName: 'Jean Mukendi',
+        parentPhone: '+243 85 987 6543',
+        parentEmail: 'jean.mukendi@email.com',
+        address: 'Commune de Gombe, Kinshasa',
         enrollmentDate: '2024-09-01',
         studentNumber: 'STU2024001',
         isActive: true,
@@ -666,15 +666,15 @@ class Database {
       },
       {
         id: '2',
-        firstName: 'Fatou',
-        lastName: 'Diallo',
+        firstName: 'Grace',
+        lastName: 'Tshala',
         dateOfBirth: '2012-08-22',
         gender: 'F',
         classId: '1',
-        parentName: 'Amadou Diallo',
-        parentPhone: '+225 07 12 34 56 78',
-        parentEmail: 'amadou.diallo@email.com',
-        address: 'Quartier Centre, Abidjan',
+        parentName: 'Paul Tshala',
+        parentPhone: '+243 99 876 5432',
+        parentEmail: 'paul.tshala@email.com',
+        address: 'Commune de Limete, Kinshasa',
         enrollmentDate: '2024-09-01',
         studentNumber: 'STU2024002',
         isActive: true,
@@ -682,15 +682,15 @@ class Database {
       },
       {
         id: '3',
-        firstName: 'Kouadio',
-        lastName: 'Yao',
+        firstName: 'Emmanuel',
+        lastName: 'Kasongo',
         dateOfBirth: '2013-03-10',
         gender: 'M',
         classId: '2',
-        parentName: 'Marie Yao',
-        parentPhone: '+225 01 98 76 54 32',
-        parentEmail: 'marie.yao@email.com',
-        address: 'Plateau, Abidjan',
+        parentName: 'Marie Kasongo',
+        parentPhone: '+243 82 345 6789',
+        parentEmail: 'marie.kasongo@email.com',
+        address: 'Commune de Kasa-Vubu, Kinshasa',
         enrollmentDate: '2024-09-01',
         studentNumber: 'STU2024003',
         isActive: true
@@ -760,7 +760,7 @@ class Database {
       {
         id: '1',
         studentId: '1',
-        amount: 50000,
+        amount: 150000,
         type: 'inscription',
         description: 'Frais d\'inscription 2024-2025',
         date: '2024-09-01',
@@ -768,12 +768,12 @@ class Database {
         status: 'completed',
         receiptNumber: 'REC001',
         academicYear: '2024-2025',
-        paidBy: 'Pierre Martin'
+        paidBy: 'Jean Mukendi'
       },
       {
         id: '2',
         studentId: '2',
-        amount: 75000,
+        amount: 200000,
         type: 'scolarite',
         description: 'Frais de scolarité - 1er trimestre',
         date: '2024-10-01',
@@ -781,12 +781,12 @@ class Database {
         status: 'completed',
         receiptNumber: 'REC002',
         academicYear: '2024-2025',
-        paidBy: 'Amadou Diallo'
+        paidBy: 'Paul Tshala'
       },
       {
         id: '3',
         studentId: '3',
-        amount: 25000,
+        amount: 80000,
         type: 'cantine',
         description: 'Frais de cantine - Octobre 2024',
         date: '2024-10-05',
@@ -794,7 +794,7 @@ class Database {
         status: 'completed',
         receiptNumber: 'REC003',
         academicYear: '2024-2025',
-        paidBy: 'Marie Yao'
+        paidBy: 'Marie Kasongo'
       }
     ];
     
@@ -806,30 +806,30 @@ class Database {
       {
         id: '1',
         firstName: 'Marie',
-        lastName: 'Dupont',
+        lastName: 'Kabila',
         position: 'Professeur de Mathématiques',
         department: 'Sciences',
-        education: 'Master en Mathématiques, Université de Paris',
+        education: 'Licence en Mathématiques, Université de Kinshasa',
         experience: '8 ans d\'enseignement au niveau primaire et secondaire',
         hireDate: '2020-09-01',
-        phone: '+225 07 89 12 34 56',
-        email: 'marie.dupont@ecole-numerique.ci',
-        address: 'Quartier Résidentiel, Abidjan',
+        phone: '+243 97 123 4567',
+        email: 'marie.kabila@ecole-numerique.cd',
+        address: 'Commune de Ngaliema, Kinshasa',
         isActive: true,
         profilePhoto: 'https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1'
       },
       {
         id: '2',
-        firstName: 'Jean',
-        lastName: 'Kouassi',
+        firstName: 'Joseph',
+        lastName: 'Kabongo',
         position: 'Directeur',
         department: 'Administration',
         education: 'Master en Sciences de l\'Éducation',
         experience: '15 ans dans l\'administration scolaire',
         hireDate: '2018-01-15',
-        phone: '+225 01 23 45 67 89',
-        email: 'jean.kouassi@ecole-numerique.ci',
-        address: 'Centre-ville, Abidjan',
+        phone: '+243 81 234 5678',
+        email: 'joseph.kabongo@ecole-numerique.cd',
+        address: 'Commune de Gombe, Kinshasa',
         isActive: true,
         observations: 'Excellent leadership, très apprécié par le personnel',
         profilePhoto: 'https://images.pexels.com/photos/1181424/pexels-photo-1181424.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1'
@@ -885,7 +885,7 @@ class Database {
       {
         id: '1',
         title: 'Rentrée scolaire 2024-2025',
-        content: 'Nous sommes heureux d\'accueillir tous nos élèves pour cette nouvelle année scolaire. Les cours commencent le 2 septembre 2024. Nous avons préparé de nombreuses activités et améliorations pour offrir la meilleure expérience éducative possible.',
+        content: 'Nous sommes heureux d\'accueillir tous nos élèves pour cette nouvelle année scolaire. Les cours commencent le 2 septembre 2024. Nous avons préparé de nombreuses activités et améliorations pour offrir la meilleure expérience éducative possible à nos enfants congolais.',
         type: 'announcement',
         date: new Date().toISOString(),
         publishDate: '2024-08-25',
@@ -897,7 +897,7 @@ class Database {
       {
         id: '2',
         title: 'Journée portes ouvertes',
-        content: 'Venez découvrir notre école lors de notre journée portes ouvertes le samedi 15 juin. Rencontrez nos enseignants, visitez nos installations modernes et découvrez notre approche pédagogique innovante.',
+        content: 'Venez découvrir notre école lors de notre journée portes ouvertes le samedi 15 juin. Rencontrez nos enseignants congolais qualifiés, visitez nos installations modernes et découvrez notre approche pédagogique adaptée au contexte congolais.',
         type: 'event',
         date: new Date().toISOString(),
         publishDate: '2024-06-01',
@@ -1049,11 +1049,11 @@ class Database {
     const sampleMessages: Message[] = [
       {
         id: '1',
-        senderName: 'Marie Kouadio',
-        senderEmail: 'marie.kouadio@email.com',
-        senderPhone: '+225 07 12 34 56 78',
+        senderName: 'Marie Mbuyi',
+        senderEmail: 'marie.mbuyi@email.com',
+        senderPhone: '+243 97 234 5678',
         subject: 'Demande d\'information sur les inscriptions',
-        message: 'Bonjour,\n\nJe souhaiterais avoir des informations sur les modalités d\'inscription pour ma fille de 8 ans. Quels sont les documents requis et les frais de scolarité ?\n\nMerci pour votre réponse.\n\nCordialement,\nMarie Kouadio',
+        message: 'Bonjour,\n\nJe souhaiterais avoir des informations sur les modalités d\'inscription pour ma fille de 8 ans. Quels sont les documents requis et les frais de scolarité ?\n\nMerci pour votre réponse.\n\nCordialement,\nMarie Mbuyi',
         type: 'contact',
         status: 'unread',
         priority: 'medium',
@@ -1061,11 +1061,11 @@ class Database {
       },
       {
         id: '2',
-        senderName: 'Pierre Martin',
-        senderEmail: 'pierre.martin@email.com',
-        senderPhone: '+225 05 98 76 54 32',
+        senderName: 'Jean Mukendi',
+        senderEmail: 'jean.mukendi@email.com',
+        senderPhone: '+243 85 987 6543',
         subject: 'Création de compte parent',
-        message: 'Bonjour,\n\nJe viens de créer mon compte parent sur votre plateforme. J\'aimerais savoir comment procéder pour inscrire mon fils et accéder à ses informations scolaires.\n\nMerci de me guider dans les prochaines étapes.\n\nCordialement,\nPierre Martin',
+        message: 'Bonjour,\n\nJe viens de créer mon compte parent sur votre plateforme. J\'aimerais savoir comment procéder pour inscrire mon fils et accéder à ses informations scolaires.\n\nMerci de me guider dans les prochaines étapes.\n\nCordialement,\nJean Mukendi',
         type: 'account_creation',
         status: 'unread',
         priority: 'high',

@@ -55,19 +55,19 @@ const Contact: React.FC = () => {
     {
       icon: Phone,
       title: 'Téléphone',
-      details: ['+225 01 23 45 67 89', '+225 07 89 12 34 56'],
+      details: ['+243 81 234 5678', '+243 97 123 4567'],
       color: 'text-blue-600'
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['contact@ecole-numerique.ci', 'direction@ecole-numerique.ci'],
+      details: ['contact@ecole-numerique.cd', 'direction@ecole-numerique.cd'],
       color: 'text-green-600'
     },
     {
       icon: MapPin,
       title: 'Adresse',
-      details: ['123 Avenue de l\'Éducation', 'Abidjan, Côte d\'Ivoire'],
+      details: ['123 Avenue de l\'Éducation', 'Kinshasa, République Démocratique du Congo'],
       color: 'text-purple-600'
     },
     {
@@ -79,9 +79,9 @@ const Contact: React.FC = () => {
   ];
 
   const whatsappNumbers = [
-    { name: 'Direction', number: '+22501234567', department: 'Administration' },
-    { name: 'Secrétariat', number: '+22507891234', department: 'Inscriptions' },
-    { name: 'Comptabilité', number: '+22505678912', department: 'Paiements' }
+    { name: 'Direction', number: '+24381234567', department: 'Administration' },
+    { name: 'Secrétariat', number: '+24397891234', department: 'Inscriptions' },
+    { name: 'Comptabilité', number: '+24385678912', department: 'Paiements' }
   ];
 
   if (isSubmitted) {
@@ -222,6 +222,7 @@ const Contact: React.FC = () => {
                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="+225 XX XX XX XX"
+                   placeholder="+243 XX XXX XXXX"
                   />
                 </div>
                 <div>
