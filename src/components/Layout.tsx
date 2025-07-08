@@ -221,7 +221,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200 flex-shrink-0">
         <div className="flex items-center">
           <School className="h-8 w-8 text-blue-600" />
-          <span className="ml-2 text-xl font-bold text-gray-900">École Numérique RDC</span>
+          <span className="ml-2 text-xl font-bold text-gray-900">Académie de la Genese</span>
         </div>
         <button
           onClick={toggleMobileMenu}
