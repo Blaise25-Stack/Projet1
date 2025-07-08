@@ -318,8 +318,8 @@ const Login: React.FC = () => {
           <div className="flex justify-center mb-4">
             <School className="h-10 w-10 sm:h-12 sm:w-12 text-blue-600" />
           </div>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">École Numérique RDC</h1>
-          <p className="text-gray-600 mt-2 text-sm sm:text-base">Système de gestion scolaire pour la RDC</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Check-School</h1>
+          <p className="text-gray-600 mt-2 text-sm sm:text-base">Academie de la Genese</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
