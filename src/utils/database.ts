@@ -2,7 +2,9 @@ import { User, Student, Class, Subject, Grade, Payment, Staff, InventoryItem, Ne
 import { SupabaseDatabase } from './databaseSupabase';
 
 // Configuration pour PostgreSQL (en production) ou localStorage (en développement)
-const USE_SUPABASE = import.meta.env.VITE_USE_SUPABASE === 'true';
+const USE_SUPABASE = import.meta.env.VITE_USE_SUPABASE === 'true' && 
+                     import.meta.env.VITE_SUPABASE_URL && 
+                     import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 // Interface pour la configuration PostgreSQL
 interface DatabaseConfig {
@@ -22,7 +24,7 @@ class Database {
   constructor() {
     if (USE_SUPABASE) {
       this.supabaseDb = new SupabaseDatabase();
-      console.log('Using Supabase database');
+      console.log('Using Supabase database:', import.meta.env.VITE_SUPABASE_URL);
     } else {
       console.log('Using localStorage database');
     }

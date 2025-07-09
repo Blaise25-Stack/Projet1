@@ -219,6 +219,8 @@ export interface RoomSchedule {
   startTime: string;
   endTime: string;
   academicYear: string;
+  documents?: string[]; // URLs des documents PDF
+  notes?: string;
 }
 
 export interface SchoolVideo {
