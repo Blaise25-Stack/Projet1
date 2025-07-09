@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { db } from '../utils/database';
 import { Room, RoomSchedule, Class, Subject } from '../types';
 import { Plus, Search, Edit, Trash2, Calendar, Clock, MapPin, Eye } from 'lucide-react';
+import PDFUpload from '../components/PDFUpload';
 
 const Rooms: React.FC = () => {
   const { user } = useAuth();
@@ -35,7 +36,9 @@ const Rooms: React.FC = () => {
     day: '',
     startTime: '',
     endTime: '',
-    academicYear: '2024-2025'
+    academicYear: '2024-2025',
+    documents: [] as string[],
+    notes: ''
   });
 
   const filteredRooms = rooms.filter(room =>
@@ -99,7 +102,9 @@ const Rooms: React.FC = () => {
       day: '',
       startTime: '',
       endTime: '',
-      academicYear: '2024-2025'
+      academicYear: '2024-2025',
+      documents: [],
+      notes: ''
     });
     setShowScheduleModal(false);
   };
@@ -275,6 +280,11 @@ const Rooms: React.FC = () => {
                                 <div className="text-blue-600">
                                   {currentSchedule.startTime} - {currentSchedule.endTime}
                                 </div>
+                                {currentSchedule.documents && currentSchedule.documents.length > 0 && (
+                                  <div className="text-blue-500 text-xs mt-1">
+                                    📄 {currentSchedule.documents.length} document(s)
+                                  </div>
+                                )}
                               </div>
                             ) : (
                               <div className="text-gray-400 text-xs">Libre</div>
@@ -334,6 +344,11 @@ const Rooms: React.FC = () => {
                                     <div className="text-blue-600">
                                       {schedule.startTime} - {schedule.endTime}
                                     </div>
+                                    {schedule.documents && schedule.documents.length > 0 && (
+                                      <div className="text-blue-500 text-xs mt-1">
+                                        📄 {schedule.documents.length} document(s)
+                                      </div>
+                                    )}
                                   </div>
                                 );
                               })}
@@ -667,6 +682,25 @@ const Rooms: React.FC = () => {
                   />
                 </div>
               </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Notes</label>
+                <textarea
+                  value={scheduleFormData.notes}
+                  onChange={(e) => setScheduleFormData({...scheduleFormData, notes: e.target.value})}
+                  className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
+                  rows={2}
+                  placeholder="Notes ou instructions particulières..."
+                />
+              </div>
+
+              {/* PDF Upload */}
+              <PDFUpload
+                currentFiles={scheduleFormData.documents}
+                onFilesChange={(files) => setScheduleFormData({...scheduleFormData, documents: files})}
+                label="Documents du cours (PDF)"
+                maxFiles={3}
+              />
 
               <div className="flex justify-end space-x-3 pt-4">
                 <button

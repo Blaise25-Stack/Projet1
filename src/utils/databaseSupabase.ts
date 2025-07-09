@@ -423,12 +423,77 @@ export class SupabaseDatabase {
   async addRoom(room: Room): Promise<void> {}
   async updateRoom(id: string, roomData: Partial<Room>): Promise<void> {}
   async deleteRoom(id: string): Promise<void> {}
-
+    const { data, error } = await supabase
+      .from('room_schedules')
+      .select('*')
+      .order('created_at', { ascending: false });
+    
+    if (error) throw error;
+    return data?.map((dbSchedule: any) => ({
+      id: dbSchedule.id,
+      roomId: dbSchedule.room_id,
+      classId: dbSchedule.class_id,
+      subjectId: dbSchedule.subject_id,
+      teacherId: dbSchedule.teacher_id,
+      day: dbSchedule.day,
+      startTime: dbSchedule.start_time,
+      endTime: dbSchedule.end_time,
+      academicYear: dbSchedule.academic_year,
+      documents: dbSchedule.documents || [],
+      notes: dbSchedule.notes
+    })) || [];
   async getRoomSchedules(): Promise<RoomSchedule[]> { return []; }
-  async addRoomSchedule(schedule: RoomSchedule): Promise<void> {}
-  async updateRoomSchedule(id: string, scheduleData: Partial<RoomSchedule>): Promise<void> {}
-  async deleteRoomSchedule(id: string): Promise<void> {}
+  
+  async addRoomSchedule(schedule: RoomSchedule): Promise<void> {
+    const { error } = await supabase
+      .from('room_schedules')
+      .insert({
+        id: schedule.id,
+        room_id: schedule.roomId,
+        class_id: schedule.classId,
+        subject_id: schedule.subjectId,
+        teacher_id: schedule.teacherId,
+        day: schedule.day,
+        start_time: schedule.startTime,
+        end_time: schedule.endTime,
+        academic_year: schedule.academicYear,
+        documents: schedule.documents,
+        notes: schedule.notes
+      });
+    
+    if (error) throw error;
+  }
+  
+  async updateRoomSchedule(id: string, scheduleData: Partial<RoomSchedule>): Promise<void> {
+    const updateData: any = {};
+    
+    if (scheduleData.roomId) updateData.room_id = scheduleData.roomId;
+    if (scheduleData.classId) updateData.class_id = scheduleData.classId;
+    if (scheduleData.subjectId) updateData.subject_id = scheduleData.subjectId;
+    if (scheduleData.teacherId) updateData.teacher_id = scheduleData.teacherId;
+    if (scheduleData.day) updateData.day = scheduleData.day;
+    if (scheduleData.startTime) updateData.start_time = scheduleData.startTime;
+    if (scheduleData.endTime) updateData.end_time = scheduleData.endTime;
+    if (scheduleData.academicYear) updateData.academic_year = scheduleData.academicYear;
+    if (scheduleData.documents !== undefined) updateData.documents = scheduleData.documents;
+    if (scheduleData.notes !== undefined) updateData.notes = scheduleData.notes;
 
+    const { error } = await supabase
+      .from('room_schedules')
+      .update(updateData)
+      .eq('id', id);
+    
+    if (error) throw error;
+  }
+  
+  async deleteRoomSchedule(id: string): Promise<void> {
+    const { error } = await supabase
+      .from('room_schedules')
+      .delete()
+      .eq('id', id);
+    
+    if (error) throw error;
+  }
   async getAttendance(): Promise<Attendance[]> { return []; }
   async addAttendance(attendance: Attendance): Promise<void> {}
   async updateAttendance(id: string, attendanceData: Partial<Attendance>): Promise<void> {}
